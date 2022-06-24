@@ -48,76 +48,90 @@ https://www.sinotech.org.tw/journal/pdfview.aspx?n=65&s=35
 我們的第一個模型是參考[paper]的一個交易模型。這個模型使用 by-production 的方式，將每一個焚化廠產出 good output 及產出 bad output 的兩個部分。產出 good output 的部分，會取所有的 input 及 good output 來計算生產可能函數。bad output 的部分則是取與 bad output 相關的 input ($x_3$) 及 bad output 來計算生產可能函數。
 
 - 首先，先使用 NT(no trading) 模型，使用兩組變數 $\lambda$ 及 $w$ 分別向兩個生產函數的前緣靠近，並讓兩個生產函數中有重複出現的的 input 使用總量一樣。
+
 $$
-Y^{NTt}_{j_{0}}= \max_{\lambda_{j},\omega_{j},\theta}\theta y_{j_0} \\
-\mbox{s.t.}
-\quad x_{1j_{0}}\geq \sum_{j=1}^nx_{1j}\lambda_{j} ,
-\quad x_{2j_{0}}\geq \sum_{j=1}^nx_{2j}\lambda_{j} ,
-\quad x_{3j_{0}}\geq \sum_{j=1}^nx_{3j}\lambda_{j},
-\quad x_{4j_{0}}\geq \sum_{j=1}^nx_{4j}\lambda_{j},
-\quad x_{5j_{0}}\geq \sum_{j=1}^nx_{5j}\lambda_{j}\\
-\theta y_{j_{0}} \leq \sum^n_{j=1}y_{j}\lambda_{j} \\
-\sum^n_{j=1}\lambda_{j}=1\\
-x_{3j_{0}} \leq \sum_{j=1}^n x_{3j}\omega_{j}, \\
-u_{j_{0}} \geq \sum_{j=1}^n u_{j}\omega_{j} \\
-\sum_{j=1}^n\omega_{j}=1 \\
-\sum_{j=1}^n x_{3j}\lambda_{j}
-=\sum_{j=1}^n x_{3j}\omega_{j} \\
-\lambda_{j},\omega_{j}\geq 0,\quad j=1,2,...,n
+\begin{aligned}
+Y^{NTt}_{j_{0}} & = Max_{\lambda_{j},\omega_{j},\theta}  \theta y_{j_0} \\
+s.t.
+& \quad x_{1j_{0}}\geq \sum_{j=1}^nx_{1j}\lambda_{j} \\
+& \quad x_{2j_{0}}\geq \sum_{j=1}^nx_{2j}\lambda_{j} \\
+& \quad x_{3j_{0}}\geq \sum_{j=1}^nx_{3j}\lambda_{j} \\
+& \quad x_{4j_{0}}\geq \sum_{j=1}^nx_{4j}\lambda_{j} \\
+& \quad x_{5j_{0}}\geq \sum_{j=1}^nx_{5j}\lambda_{j} \\
+& \theta y_{j_{0}} \leq \sum^n_{j=1}y_{j}\lambda_{j} \\
+& \sum^n_{j=1}\lambda_{j}=1\\
+& x_{3j_{0}} \leq \sum_{j=1}^n x_{3j}\omega_{j}, \\
+& u_{j_{0}} \geq \sum_{j=1}^n u_{j}\omega_{j} \\
+& \sum_{j=1}^n\omega_{j}=1 \\
+& \sum_{j=1}^n x_{3j}\lambda_{j} =\sum_{j=1}^n x_{3j}\omega_{j} \\
+& \lambda_{j},\omega_{j}\geq 0,\quad j=1,2,...,n
+\end{aligned}
 $$
+
 - 再來，使用 CIT(cross-industrial trading) 模型，在 NT 的基礎上，再加上一個調整係數 $\delta$ ，讓同一個時期內(年)的焚化廠之間可以交易碳排權，並限制交易後的總排放量不能比原本的總排放量多
 
-$$ \max_{\lambda_{jk}^t,\omega_{jk}^t,\theta_{k}^t,\delta_{k}^t}\sum_{k=1}^n\theta_{k}^t y_{j}^t \\
-\mbox{s.t.} \quad \forall i \in \{1,2,...,n\} \quad DMU_{i}:
-\quad x_{1i}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{ji}^t,
-\quad x_{2i}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{ji}^t,
-\quad x_{3i}^t \geq \sum_{j=1}^n x_{3j}^t\lambda_{ji}^t,
-\quad x_{4i}^t \geq \sum_{j=1}^n x_{4j}^t\lambda_{ji}^t,
-\quad x_{5i}^t \geq \sum_{j=1}^n x_{5j}^t\lambda_{ji}^t \\
-\theta_{i}^t y_{i}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{ji}^t \\
-\sum^n_{j=1}\lambda_{ji}^t=1\\
-x_{3i}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{ji}^t, \\
-\delta_{i}^t u_{i}^t \geq \sum_{j=1}^n u_{j}^t\omega_{ji}^t \\
-\sum^n_{j=1}\omega_{ji}^t=1\\
-\sum^n_{j=1}x_{3j}^t\lambda_{ji}^t=\sum_{j=1}^nx_{3j}^t\omega_{ji}^t\\
-\mbox{Aggregate bad output:}\\
-\sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{k=1}^n u_{k}^t \\
-\lambda_{jk}^t,\omega_{jk}^t
-\geq0 \quad j=1,2,...n;\quad k =1,2,...n$$
+$$ 
+\begin{aligned}
+Max_{\lambda_{jk}^t,\omega_{jk}^t,\theta_{k}^t,\delta_{k}^t} & \sum_{k=1}^n\theta_{k}^t y_{j}^t \\
+s.t. & \quad DMU_{i}:
+ \quad x_{1i}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{ji}^t,
+ \quad x_{2i}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{ji}^t,
+ \quad x_{3i}^t \geq \sum_{j=1}^n x_{3j}^t\lambda_{ji}^t,
+ \quad x_{4i}^t \geq \sum_{j=1}^n x_{4j}^t\lambda_{ji}^t,
+ \quad x_{5i}^t \geq \sum_{j=1}^n x_{5j}^t\lambda_{ji}^t \quad \forall i \in {1,2,...,n} \\
+& \theta_{i}^t y_{i}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{ji}^t \\
+& \sum^n_{j=1}\lambda_{ji}^t=1\\
+& x_{3i}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{ji}^t, \\
+& \delta_{i}^t u_{i}^t \geq \sum_{j=1}^n u_{j}^t\omega_{ji}^t \\
+& \sum^n_{j=1}\omega_{ji}^t=1\\
+& \sum^n_{j=1}x_{3j}^t\lambda_{ji}^t=\sum_{j=1}^nx_{3j}^t\omega_{ji}^t\\
+& \mbox{Aggregate bad output:}\\
+& \sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{k=1}^n u_{k}^t \\
+& \lambda_{jk}^t,\omega_{jk}^t
+& \geq0 \quad j=1,2,...n;\quad k =1,2,...n
+\end{aligned}
+$$
 
 - 最後，使用 CIIT(cross-industrial and intertemporal trading)，與 CIT 一樣加入一個調整係數 $\delta$，但讓不同時期(年)的焚化廠之間也可以交易碳排權，並限制交易後的總排放量不能比原本的總排放量多
 
+
 $$
-\max_{\lambda_{jk}^t,\omega_{jk}^t,\theta_{k}^t,\delta_{k}^t} \sum_{t=1}^T\sum_{k=1}^n\theta_{k}^t y_{j}^t \\
-\mbox{s.t.} \quad DMU_{1}:
-\quad x_{11}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{j1}^t ,
-\quad x_{21}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{j1}^t ,
+\begin{aligned}
+Max_{\lambda_{jk}^t,\omega_{jk}^t,\theta_{k}^t,\delta_{k}^t} & \sum_{t=1}^T\sum_{k=1}^n\theta_{k}^t y_{j}^t \\
+s.t. & \quad DMU_{1}:
+\quad x_{11}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{j1}^t,
+\quad x_{21}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{j1}^t,
 \quad x_{31}^t \geq \sum_{j=1}^n x_{3j}^t\lambda_{j1}^t,
 \quad x_{41}^t \geq \sum_{j=1}^n x_{4j}^t\lambda_{j1}^t,
 \quad x_{51}^t \geq \sum_{j=1}^n x_{5j}^t\lambda_{j1}^t \quad t=1,2,....,T\\
-\theta_{1}^t y_{1}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{j1}^t,\quad t=1,2,....,T \\
-\sum^n_{j=1}\lambda_{j1}^t=1,\quad t=1,2,....,T\\
-x_{31}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{j1}^t,\quad t=1,2,....,T \\
-\delta_{1}^t u_{1}^t \geq \sum_{j=1}^n u_{j}^t\omega_{j1}^t ,\quad t=1,2,....,T\\
-\sum^n_{j=1}\omega_{j1}^t=1,\quad t=1,2,....,T\\
-\sum^n_{j=1}x_{3j}^t\lambda_{j1}^t=\sum_{j=1}^nx_{3j}^t\omega_{j1}^t,\quad t=1,2,....,T\\
-.......\\
-DMU_{n}:
-\quad x_{1n}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{jn}^t ,
-\quad x_{2n}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{jn}^t ,
+& \theta_{1}^t y_{1}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{j1}^t,\quad t=1,2,....,T \\
+& \sum^n_{j=1}\lambda_{j1}^t=1,\quad t=1,2,....,T\\
+& x_{31}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{j1}^t,\quad t=1,2,....,T \\
+& \delta_{1}^t u_{1}^t \geq \sum_{j=1}^n u_{j}^t\omega_{j1}^t ,\quad t=1,2,....,T\\
+& \sum^n_{j=1}\omega_{j1}^t=1,\quad t=1,2,....,T\\
+& \sum^n_{j=1}x_{3j}^t\lambda_{j1}^t=\sum_{j=1}^nx_{3j}^t\omega_{j1}^t,\quad t=1,2,....,T\\
+& .......\\
+\end{aligned}
+
+$$
+\begin{aligned}
+& DMU_{n}:
+\quad x_{1n}^t \geq \sum_{j=1}^n x_{1j}^t\lambda_{jn}^t,
+\quad x_{2n}^t \geq \sum_{j=1}^n x_{2j}^t\lambda_{jn}^t,
 \quad x_{3n}^t \geq \sum_{j=1}^n x_{3j}^t\lambda_{jn}^t,
 \quad x_{4n}^t \geq \sum_{j=1}^n x_{4j}^t\lambda_{jn}^t,
-\quad x_{5n}^t \geq \sum_{j=1}^n x_{5j}^t\lambda_{jn}^t,\quad t=1,2,....,T\\
-\theta_{n}^t y_{n}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{jn}^t,\quad t=1,2,....,T \\
-\sum^n_{j=1}\lambda_{jn}^t=1,\quad t=1,2,....,T\\
-x_{3n}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{jn}^t,\quad t=1,2,....,T \\
-\delta_{n}^t u_{n}^t \geq \sum_{j=1}^n u_{j}^t\omega_{jn}^t ,\quad t=1,2,....,T\\
-\sum^n_{j=1}\omega_{jn}^t=1,\quad t=1,2,....,T\\
-\sum^n_{j=1}x_{3j}^t\lambda_{jn}^t=\sum_{j=1}^nx_{3j}^t\omega_{jn}^t,\quad t=1,2,....,T\\
-\mbox{Aggregate bad output:}\\
-\sum_{t=1}^T\sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{t=1}^T\sum_{k=1}^n u_{k}^t\\
-\lambda_{jk}^t,\omega_{jk}^t
-\geq0 \quad j=1,2,...n;\quad k =1,2,...n,\quad t=1,2,....,T$$
+\quad x_{5n}^t \geq \sum_{j=1}^n x_{5j}^t\lambda_{jn}^t, \quad t=1,2,....,T\\
+& \theta_{n}^t y_{n}^t \leq\sum^n_{j=1}y_{j}^t\lambda_{jn}^t,\quad t=1,2,....,T \\
+& \sum^n_{j=1}\lambda_{jn}^t=1,\quad t=1,2,....,T\\
+& x_{3n}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{jn}^t,\quad t=1,2,....,T \\
+& \delta_{n}^t u_{n}^t \geq \sum_{j=1}^n u_{j}^t\omega_{jn}^t ,\quad t=1,2,....,T\\
+& \sum^n_{j=1}\omega_{jn}^t=1,\quad t=1,2,....,T\\
+& \sum^n_{j=1}x_{3j}^t\lambda_{jn}^t=\sum_{j=1}^nx_{3j}^t\omega_{jn}^t,\quad t=1,2,....,T\\
+& \text{Aggregate bad output:} \\
+& \sum_{t=1}^T\sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{t=1}^T\sum_{k=1}^n u_{k}^t\\
+& \geq0 \quad j=1,2,...n;\quad k =1,2,...n,\quad t=1,2,....,T
+\end{aligned}
+$$
 
 使用上述三種模型並比較三者之間的差異來驗證交易是否可以在不增加 bad output 的情況下製造更多的 good output。
 
