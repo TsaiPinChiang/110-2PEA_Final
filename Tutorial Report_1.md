@@ -83,7 +83,8 @@ x_{3i}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{ji}^t, \\
 \mbox{Aggregate bad output:}\\
 \sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{k=1}^n u_{k}^t \\
 \lambda_{jk}^t,\omega_{jk}^t
-\geq0 \quad j=1,2,...n;\quad k =1,2,...n$$
+\geq0 \quad j=1,2,...n;\quad k =1,2,...n
+$$
 
 - 最後，使用 CIIT(cross-industrial and intertemporal trading)，與 CIT 一樣加入一個調整係數 $\delta$，但讓不同時期(年)的焚化廠之間也可以交易碳排權，並限制交易後的總排放量不能比原本的總排放量多
 
@@ -117,7 +118,8 @@ x_{3n}^t \leq \sum_{j=1}^n x_{3j}^t\omega_{jn}^t,\quad t=1,2,....,T \\
 \mbox{Aggregate bad output:}\\
 \sum_{t=1}^T\sum_{k=1}^n\delta_{k}^t u_{k}^t \leq \sum_{t=1}^T\sum_{k=1}^n u_{k}^t\\
 \lambda_{jk}^t,\omega_{jk}^t
-\geq0 \quad j=1,2,...n;\quad k =1,2,...n,\quad t=1,2,....,T$$
+\geq0 \quad j=1,2,...n;\quad k =1,2,...n,\quad t=1,2,....,T
+$$
 
 使用上述三種模型並比較三者之間的差異來驗證交易是否可以在不增加 bad output 的情況下製造更多的 good output。
 
@@ -212,7 +214,7 @@ $$
 \end{aligned}
 $$
 
-#### to compute $\varepsilon$
+#### To Compute $\varepsilon$
 $$
 \begin{aligned}
 &0 \leq x_{i r} \perp-P_{i}^{X}+\varphi 2_{i r} \leq 0, \quad \forall i \in I_{v}, r \in K\\
@@ -235,7 +237,7 @@ $$
 
 ## 結果
 
-### 1. trading system
+### 1. Trading System
 
 我們實作後發現三個模型的 good output 是一樣多的，且無論我們如何變動原資料中的 bad output，這個數值都不會變。經過多次 debug 及討論後，我們發現了這個模型出現的問題：
 
@@ -283,7 +285,7 @@ $$
 
 
 
-#### <center>FFurther analysis on Nash CRS AEP model </center> 
+#### <centerFurther analysis on Nash CRS AEP model </center> 
 
 * Take a deeper look into the new inputs, outputs, and bad outputs after Nash CRS AEP.
 * We get to compare the policies for DMUs with different environmental efficiency.
